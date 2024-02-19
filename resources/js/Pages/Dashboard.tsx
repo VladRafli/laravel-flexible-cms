@@ -1,22 +1,26 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-import { PageProps } from '@/types';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head } from "@inertiajs/react";
+import { PageProps } from "@/types";
+import { ThemeProvider } from "@/Components/ThemeProvider";
+import { Card, CardContent } from "@/Components/ui/Card";
 
 export default function Dashboard({ auth }: PageProps) {
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>}
-        >
-            <Head title="Dashboard" />
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <AuthenticatedLayout user={auth.user}>
+                <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
-                    </div>
-                </div>
-            </div>
-        </AuthenticatedLayout>
+                <section className="h-screen flex justify-center items-center">
+                    <Card>
+                        <CardContent className="p-6">
+                            <p>
+                                Nothing to show here. Check navigation bar to
+                                see other features to see.
+                            </p>
+                        </CardContent>
+                    </Card>
+                </section>
+            </AuthenticatedLayout>
+        </ThemeProvider>
     );
 }

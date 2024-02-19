@@ -1,9 +1,10 @@
 import { Link, Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
+import { ThemeProvider } from '@/Components/ThemeProvider';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<{ laravelVersion: string, phpVersion: string }>) {
     return (
-        <>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <Head title="Welcome" />
             <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
                 <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
@@ -313,6 +314,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }: PageProps<
                     }
                 }
             `}</style>
-        </>
+        </ThemeProvider>
     );
 }
